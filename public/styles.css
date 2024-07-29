@@ -7,15 +7,16 @@ body {
 }
 
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    max-height: 40px;
 }
 
 #search {
@@ -40,7 +41,7 @@ body {
 }
 
 .game-card {
-  background-color: #7a42f4; /* Slightly brighter shade of purple */
+  background-color: #7a42f4;
   border-radius: 5px;
   padding: 10px;
   width: 200px;
@@ -83,6 +84,7 @@ iframe {
     top: 50px;
 }
 .logo {
+    cursor:pointer;
     font-family: "Ga Maamli", sans-serif;
     font-weight: 400;
     font-style: normal;

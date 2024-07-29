@@ -11,4 +11,5 @@ app.get('/game/:root', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'game.html'));
 });
 
+
 app.listen(8000);

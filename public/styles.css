@@ -1,0 +1,176 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #4b0082; /* Shade of purple */
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#search {
+  padding: 5px;
+  font-size: 16px;
+}
+
+#home {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.game-card {
+  background-color: #7a42f4; /* Slightly brighter shade of purple */
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 32px;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+
+.game-card img {
+  width: 128px;
+  height: 128px;
+  border-radius: 15px;
+}
+
+iframe {
+  border-radius: 15px;
+  width: 100%;
+  height: calc(100vh - 70px); /* Adjust for navbar height */
+  border: none;
+}
+
+.search-dropdown {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin-top: 5px;
+    right: 5px;
+    top: 50px;
+}
+.logo {
+    font-family: "Ga Maamli", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    color: #ab0fcf;
+}
+.dropdown-item, .dropdown-more {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #555;
+}
+
+.dropdown-more {
+  text-align: center;
+  font-style: italic;
+}
+
+button {
+  background-color: #7a42f4;
+  outline: none;
+  border:none;
+  color:white;
+}
+
+.game-detail {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+.iframe-container {
+  position: relative;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.iframe-container iframe {
+  width: 80%;
+  height: 600px;
+  border-radius: 15px;
+  border: none;
+  align-self: flex-start;
+}
+.iframe-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #7a42f4;
+  border-radius: 15px;
+  align-self: flex-start;
+}
+.iframe-bar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+.ads-container {
+  max-width: 150px;
+  flex: 1;
+  margin-left: 20px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+.description {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+.more-games {
+  margin-top: 40px;
+  width: 100%;
+  text-align: center;
+}
+.more-games-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+span#gameTitle {
+  position: relative;
+  top: -14px;
+}

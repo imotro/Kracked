@@ -1,93 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Kracked</title>
-    <link rel="icon" href="/icon.png">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="icon" href="/icon.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="navbar">
-        <p class="logo" onclick="location.href='/'">Kracked</p>
-        <input type="text" id="search" placeholder="Search...">
+      <p class="logo" onclick="location.href='/'">Kracked</p>
+      <input type="text" id="search" placeholder="Search..." />
     </div>
     <div class="game-detail">
-        <div class="iframe-container">
-            <iframe id="gameIframe"></iframe>
-            <div class="iframe-bar">
-                <div class="game-info">
-                    <img id="gameImage" height="32" src="">
-                    <span id="gameTitle"></span>
-                </div>
-                <button onclick="toggleFullScreen()"><strong style="font-size:20px;pointer:cursor;">⛶</strong></button>
-            </div>
-            <div class="description" id="gameDescription"></div>
+      <div class="iframe-container">
+        <iframe id="gameIframe"></iframe>
+        <div class="iframe-bar">
+          <div class="game-info">
+            <img id="gameImage" height="32" src="" />
+            <span id="gameTitle"></span>
+          </div>
+          <button onclick="toggleFullScreen()">
+            <strong style="font-size: 20px; pointer: cursor">⛶</strong>
+          </button>
         </div>
-        <div class="ads-container">
-            <!-- Your ads go here -->
-        </div>
+        <div class="description" id="gameDescription"></div>
+      </div>
+      <div class="ads-container">
+        <!-- Your ads go here -->
+      </div>
     </div>
     <div class="more-games">
-        <h2>More Games</h2>
-        <div id="moreGamesContainer" class="more-games-container"></div>
+      <h2>More Games</h2>
+      <div id="moreGamesContainer" class="more-games-container"></div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const root = window.location.pathname.split('/').pop();
+      document.addEventListener("DOMContentLoaded", () => {
+        const root = window.location.pathname.split("/").pop();
 
-            fetch('/games.json')
-                .then(response => response.json())
-                .then(data => {
-                    const game = data.find(g => g.root === root);
-                    if (game) {
-                        document.getElementById('gameTitle').textContent = game.name;
-                        document.getElementById('gameIframe').src = `/cdn/${game.root}/${game.file}`;
-                        document.getElementById('gameDescription').textContent = game.desc;
-                        document.getElementById('gameImage').src = "/cdn/"+ game.root+"/"+game.img;
-                        loadMoreGames(data, game.root);
-                    } else {
-                        document.getElementById('gameTitle').textContent = 'Game Not Found';
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        });
+        fetch("/games.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const game = data.find((g) => g.root === root);
+            if (game) {
+              document.getElementById("gameTitle").textContent = game.name;
+              document.getElementById(
+                "gameIframe"
+              ).src = `/cdn/${game.root}/${game.file}`;
+              document.getElementById("gameDescription").textContent =
+                game.desc;
+              document.getElementById("gameImage").src =
+                "/cdn/" + game.root + "/" + game.img;
+              loadMoreGames(data, game.root);
+            } else {
+              document.getElementById("gameTitle").textContent =
+                "Game Not Found";
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      });
 
-        function loadMoreGames(games, currentRoot) {
-            const moreGamesContainer = document.getElementById('moreGamesContainer');
-            games.filter(game => game.root !== currentRoot)
-                .sort(() => 0.5 - Math.random())
-                .slice(0, 6)
-                .forEach(game => {
-                    const card = document.createElement('div');
-                    card.classList.add('game-card');
-                    card.innerHTML = `
+      function loadMoreGames(games, currentRoot) {
+        const moreGamesContainer =
+          document.getElementById("moreGamesContainer");
+        games
+          .filter((game) => game.root !== currentRoot)
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 6)
+          .forEach((game) => {
+            const card = document.createElement("div");
+            card.classList.add("game-card");
+            card.innerHTML = `
                         <img src="/cdn/${game.root}/${game.img}" alt="${game.name}">
                         <h3>${game.name}</h3>
                     `;
-                    card.addEventListener('click', () => {
-                        window.location.href = `/game/${game.root}`;
-                    });
-                    moreGamesContainer.appendChild(card);
-                });
-        }
+            card.addEventListener("click", () => {
+              window.location.href = `/game/${game.root}`;
+            });
+            moreGamesContainer.appendChild(card);
+          });
+      }
 
-        function toggleFullScreen() {
-            const iframe = document.querySelector('iframe');
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.mozRequestFullScreen) { // Firefox
-                iframe.mozRequestFullScreen();
-            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) { // IE/Edge
-                iframe.msRequestFullscreen();
-            }
+      function toggleFullScreen() {
+        const iframe = document.querySelector("iframe#gameIframe");
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+          // Firefox
+          iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) {
+          // Chrome, Safari and Opera
+          iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) {
+          // IE/Edge
+          iframe.msRequestFullscreen();
         }
+      }
     </script>
     <script src="/search.js"></script>
-</body>
+  </body>
 </html>
